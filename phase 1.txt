@@ -1,0 +1,45 @@
+symbols = '+-><'
+
+def plus(value):
+    print('PLUS')
+    return value + 1
+
+def minus(value):
+    print('MINUS')
+    return value - 1
+
+def greater(dpointer):
+    print('GREATER')
+    return dpointer + 1
+
+def lesser(dpointer):
+    print('LESSER')
+    return dpointer - 1
+
+operations = {
+    'data': {
+        '+': plus,
+        '-': minus
+    },
+    'pointer': {
+        '>': greater,
+        '<': lesser
+    }
+}
+
+data= [0] * 6
+dpointer = 0
+print(data)
+
+char = input('Enter a character:')
+
+while char != '':
+    if char in symbols:
+        if char in operations['data']:
+            data[dpointer] = operations['data'][char](data[dpointer])
+        elif char in operations['pointer']:
+            dpointer = operations['pointer'][char](dpointer)
+    else:
+        print('INVALID')
+    print(data)
+    char = input('Enter a character:')
